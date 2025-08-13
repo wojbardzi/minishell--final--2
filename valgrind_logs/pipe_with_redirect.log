@@ -1,0 +1,384 @@
+==16272== Memcheck, a memory error detector
+==16272== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==16272== Using Valgrind-3.22.0-bd4db67b1d-20231031 and LibVEX; rerun with -h for copyright info
+==16272== Command: ./minishell
+==16272== Parent PID: 16271
+==16272== 
+--16272-- 
+--16272-- Valgrind options:
+--16272--    --leak-check=full
+--16272--    --show-leak-kinds=all
+--16272--    --track-origins=yes
+--16272--    --verbose
+--16272--    --log-file=valgrind_logs/pipe_with_redirect.log
+--16272--    --suppressions=./readline.supp
+--16272-- Contents of /proc/version:
+--16272--   Linux version 6.14.0-27-generic (buildd@lcy02-amd64-120) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #27~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Tue Jul 22 17:38:49 UTC 2
+--16272-- 
+--16272-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand-rdseed
+--16272-- Page sizes: currently 4096, max supported 4096
+--16272-- Valgrind library directory: /usr/libexec/valgrind
+--16272-- Reading syms from /home/wojti/Desktop/minishell- final- 2/minishell
+--16272-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+--16272--   Considering /usr/lib/debug/.build-id/28/1ac1521b4102509b1c7ac7004db7c1efb81796.debug ..
+--16272--   .. build-id is valid
+--16272-- Reading syms from /usr/libexec/valgrind/memcheck-amd64-linux
+--16272--    object doesn't have a dynamic symbol table
+--16272-- Scheduler: using generic scheduler lock implementation.
+--16272-- Reading suppressions file: ./readline.supp
+--16272-- Reading suppressions file: /usr/libexec/valgrind/default.supp
+==16272== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-16272-by-wojti-on-???
+==16272== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-16272-by-wojti-on-???
+==16272== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-16272-by-wojti-on-???
+==16272== 
+==16272== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==16272== don't want to do, unless you know exactly what you're doing,
+==16272== or are doing some strange experiment):
+==16272==   /usr/bin/vgdb --pid=16272 ...command...
+==16272== 
+==16272== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==16272==   /path/to/gdb ./minishell
+==16272== and then give GDB the following command
+==16272==   target remote | /usr/bin/vgdb --pid=16272
+==16272== --pid is optional if only one valgrind process is running
+==16272== 
+--16272-- REDIR: 0x4028b00 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c2e1a (???)
+--16272-- REDIR: 0x40272b0 (ld-linux-x86-64.so.2:index) redirected to 0x580c2e34 (???)
+--16272-- Reading syms from /usr/libexec/valgrind/vgpreload_core-amd64-linux.so
+--16272-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+==16272== WARNING: new redirection conflicts with existing -- ignoring it
+--16272--     old: 0x04028b00 (strlen              ) R-> (0000.0) 0x580c2e1a ???
+--16272--     new: 0x04028b00 (strlen              ) R-> (2007.0) 0x0484f340 strlen
+--16272-- REDIR: 0x40274e0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4850460 (strcmp)
+--16272-- REDIR: 0x4026910 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4853cd0 (mempcpy)
+--16272-- Reading syms from /usr/lib/x86_64-linux-gnu/libreadline.so.8.2
+--16272-- Reading syms from /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+--16272-- Reading syms from /usr/lib/x86_64-linux-gnu/libncurses.so.6.4
+--16272-- Reading syms from /usr/lib/x86_64-linux-gnu/libc.so.6
+--16272--   Considering /usr/lib/debug/.build-id/28/2c2c16e7b6600b0b22ea0c99010d2795752b5f.debug ..
+--16272--   .. build-id is valid
+--16272-- REDIR: 0x4028ca0 (ld-linux-x86-64.so.2:strncmp) redirected to 0x484fc90 (strncmp)
+--16272-- REDIR: 0x49d5050 (libc.so.6:strnlen) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d50e0 (libc.so.6:strpbrk) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d31a0 (libc.so.6:strcmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49ec3b0 (libc.so.6:wcsnlen) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d2290 (libc.so.6:memset) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49ebb20 (libc.so.6:wcslen) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x4a573c0 (libc.so.6:__memcpy_chk) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d2200 (libc.so.6:memrchr) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49ec350 (libc.so.6:wcsncpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d1720 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49ea8e0 (libc.so.6:wcschr) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d3090 (libc.so.6:index) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d5110 (libc.so.6:rindex) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49ea990 (libc.so.6:wcscmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d24b0 (libc.so.6:stpncpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49f8eb0 (libc.so.6:wmemchr) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d4ef0 (libc.so.6:strncmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d2510 (libc.so.6:strcasecmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d4310 (libc.so.6:strcspn) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49eb8f0 (libc.so.6:wcscpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d3020 (libc.so.6:strcat) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d4df0 (libc.so.6:strncasecmp_l) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d3110 (libc.so.6:strchrnul) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d1630 (libc.so.6:bcmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d42a0 (libc.so.6:strcpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d25b0 (libc.so.6:strcasecmp_l) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d4cc0 (libc.so.6:strlen) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d4f90 (libc.so.6:strncpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49f8f30 (libc.so.6:wmemcmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x4a574e0 (libc.so.6:__memmove_chk) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+==16272== WARNING: new redirection conflicts with existing -- ignoring it
+--16272--     old: 0x04aa89d0 (__memcpy_chk_avx_una) R-> (2030.0) 0x04853dd0 __memcpy_chk
+--16272--     new: 0x04aa89d0 (__memcpy_chk_avx_una) R-> (2024.0) 0x04853740 __memmove_chk
+--16272-- REDIR: 0x49d2440 (libc.so.6:stpcpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d1fc0 (libc.so.6:memmove) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+==16272== Preferring higher priority redirection:
+--16272--     old: 0x04aa8a00 (__memcpy_avx_unalign) R-> (2018.0) 0x04851580 __memcpy_avx_unaligned_erms
+--16272--     new: 0x04aa8a00 (__memcpy_avx_unalign) R-> (2018.1) 0x04852d60 memmove
+--16272-- REDIR: 0x49d15b0 (libc.so.6:memchr) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d52e0 (libc.so.6:strspn) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d20e0 (libc.so.6:mempcpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d4d50 (libc.so.6:strncasecmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d4e90 (libc.so.6:strncat) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x49d5ba0 (libc.so.6:strstr) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--16272-- REDIR: 0x4aad5f0 (libc.so.6:__strrchr_avx2) redirected to 0x484ed20 (rindex)
+--16272-- REDIR: 0x49cd650 (libc.so.6:malloc) redirected to 0x48467b0 (malloc)
+--16272-- REDIR: 0x4aab740 (libc.so.6:__strlen_avx2) redirected to 0x484f220 (strlen)
+--16272-- REDIR: 0x4aa8a00 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x4852d60 (memmove)
+--16272-- REDIR: 0x4aac820 (libc.so.6:__strncmp_avx2) redirected to 0x484fab0 (strncmp)
+--16272-- REDIR: 0x4aaada0 (libc.so.6:__strchrnul_avx2) redirected to 0x48537b0 (strchrnul)
+--16272-- REDIR: 0x496ad30 (libc.so.6:setenv) redirected to 0x48547d0 (setenv)
+--16272-- REDIR: 0x4aaab60 (libc.so.6:__strchr_avx2) redirected to 0x484ef00 (index)
+--16272-- REDIR: 0x49ce0a0 (libc.so.6:realloc) redirected to 0x484db00 (realloc)
+--16272-- REDIR: 0x4aa89d0 (libc.so.6:__memcpy_chk_avx_unaligned_erms) redirected to 0x4853dd0 (__memcpy_chk)
+--16272-- REDIR: 0x4aa89c0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x48538d0 (mempcpy)
+--16272-- REDIR: 0x4aaaf90 (libc.so.6:__strcmp_avx2) redirected to 0x4850360 (strcmp)
+--16272-- REDIR: 0x49ce7a0 (libc.so.6:calloc) redirected to 0x484d8a0 (calloc)
+--16272-- REDIR: 0x4aad320 (libc.so.6:__strnlen_avx2) redirected to 0x484f1c0 (strnlen)
+--16272-- REDIR: 0x49cdd30 (libc.so.6:free) redirected to 0x4849820 (free)
+--16272-- REDIR: 0x4aab4f0 (libc.so.6:__strcpy_avx2) redirected to 0x484f370 (strcpy)
+--16272-- REDIR: 0x4aa9400 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x4852c50 (memset)
+--16272-- REDIR: 0x4aace80 (libc.so.6:__strncpy_avx2) redirected to 0x484f4f0 (strncpy)
+--16272-- REDIR: 0x4aa8000 (libc.so.6:__memchr_avx2) redirected to 0x48504e0 (memchr)
+--16272-- REDIR: 0x4aa9e50 (libc.so.6:__strcasecmp_l_avx2) redirected to 0x484ff70 (strcasecmp_l)
+--16272-- REDIR: 0x4aa96b0 (libc.so.6:__stpcpy_avx2) redirected to 0x48525a0 (stpcpy)
+--16272-- REDIR: 0x4aa9e40 (libc.so.6:__strcasecmp_avx2) redirected to 0x484fcf0 (strcasecmp)
+--16272-- REDIR: 0x4aab8c0 (libc.so.6:__strncasecmp_avx2) redirected to 0x484fdd0 (strncasecmp)
+--16272-- REDIR: 0x4aa82a0 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x4852480 (bcmp)
+==16274== 
+==16274== HEAP SUMMARY:
+==16274==     in use at exit: 240,434 bytes in 374 blocks
+==16274==   total heap usage: 664 allocs, 290 frees, 275,117 bytes allocated
+==16274== 
+==16274== Searching for pointers to 374 not-freed blocks
+==16274== Checked 288,736 bytes
+==16274== 
+==16274== 2 bytes in 1 blocks are still reachable in loss record 1 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x111688: ft_strdup (in /home/wojti/Desktop/minishell- final- 2/minishell)
+==16274==    by 0x10DECB: handle_pipe_operator (sources/parsing/push_to_exec2.c:27)
+==16274==    by 0x10DE02: push_to_exec (sources/parsing/push_to_exec2.c:66)
+==16274==    by 0x10EB46: parsing (sources/parsing/parsing.c:31)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 4 bytes in 1 blocks are still reachable in loss record 2 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x10B9F5: set_parsing (sources/utils/set_parsing.c:113)
+==16274==    by 0x10EADC: parsing (sources/parsing/parsing.c:26)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 4 bytes in 2 blocks are still reachable in loss record 3 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x111BA6: ft_substr (in /home/wojti/Desktop/minishell- final- 2/minishell)
+==16274==    by 0x10D1EB: process_separator (sources/parsing/parsing_tokens_words.c:54)
+==16274==    by 0x10CF43: set_words_tab (sources/parsing/parsing_tokens_words.c:91)
+==16274==    by 0x10F1FB: tokenize (sources/parsing/parsing_tokens.c:72)
+==16274==    by 0x10EAE9: parsing (sources/parsing/parsing.c:27)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 9 bytes in 2 blocks are still reachable in loss record 7 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x111688: ft_strdup (in /home/wojti/Desktop/minishell- final- 2/minishell)
+==16274==    by 0x10F8F8: setup_exec_cmd (sources/parsing/command_parsing_utils.c:91)
+==16274==    by 0x10EE07: collect_args_and_redirections (sources/parsing/push_to_exec.c:57)
+==16274==    by 0x10EBB1: parse_command_with_redirections (sources/parsing/push_to_exec.c:89)
+==16274==    by 0x10DDD6: push_to_exec (sources/parsing/push_to_exec2.c:61)
+==16274==    by 0x10EB46: parsing (sources/parsing/parsing.c:31)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 9 bytes in 3 blocks are still reachable in loss record 8 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x111688: ft_strdup (in /home/wojti/Desktop/minishell- final- 2/minishell)
+==16274==    by 0x10D2F8: process_text (sources/parsing/process_text.c:109)
+==16274==    by 0x10EB2C: parsing (sources/parsing/parsing.c:30)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 14 bytes in 3 blocks are still reachable in loss record 17 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x111BA6: ft_substr (in /home/wojti/Desktop/minishell- final- 2/minishell)
+==16274==    by 0x10D1AB: process_separator (sources/parsing/parsing_tokens_words.c:51)
+==16274==    by 0x10CF43: set_words_tab (sources/parsing/parsing_tokens_words.c:91)
+==16274==    by 0x10F1FB: tokenize (sources/parsing/parsing_tokens.c:72)
+==16274==    by 0x10EAE9: parsing (sources/parsing/parsing.c:27)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 14 bytes in 3 blocks are still reachable in loss record 18 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x111688: ft_strdup (in /home/wojti/Desktop/minishell- final- 2/minishell)
+==16274==    by 0x10F83F: process_token_in_args (sources/parsing/command_parsing_utils.c:55)
+==16274==    by 0x10F7A8: fill_args_array (sources/parsing/command_parsing_utils.c:77)
+==16274==    by 0x10EDC5: collect_args_and_redirections (sources/parsing/push_to_exec.c:50)
+==16274==    by 0x10EBB1: parse_command_with_redirections (sources/parsing/push_to_exec.c:89)
+==16274==    by 0x10DDD6: push_to_exec (sources/parsing/push_to_exec2.c:61)
+==16274==    by 0x10EB46: parsing (sources/parsing/parsing.c:31)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 16 bytes in 1 blocks are still reachable in loss record 21 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x111BA6: ft_substr (in /home/wojti/Desktop/minishell- final- 2/minishell)
+==16274==    by 0x10CF7C: set_words_tab (sources/parsing/parsing_tokens_words.c:94)
+==16274==    by 0x10F1FB: tokenize (sources/parsing/parsing_tokens.c:72)
+==16274==    by 0x10EAE9: parsing (sources/parsing/parsing.c:27)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 16 bytes in 1 blocks are still reachable in loss record 22 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x111688: ft_strdup (in /home/wojti/Desktop/minishell- final- 2/minishell)
+==16274==    by 0x10CAD6: create_redirection (sources/parsing/redirection_utils.c:23)
+==16274==    by 0x10CB4E: add_redirection (sources/parsing/redirection_utils.c:39)
+==16274==    by 0x10CD4C: handle_redirection_token (sources/parsing/redirection_utils.c:78)
+==16274==    by 0x10EEC3: process_redirections (sources/parsing/push_to_exec.c:26)
+==16274==    by 0x10ED70: collect_args_and_redirections (sources/parsing/push_to_exec.c:45)
+==16274==    by 0x10EBB1: parse_command_with_redirections (sources/parsing/push_to_exec.c:89)
+==16274==    by 0x10DDD6: push_to_exec (sources/parsing/push_to_exec2.c:61)
+==16274==    by 0x10EB46: parsing (sources/parsing/parsing.c:31)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274== 
+==16274== 24 bytes in 3 blocks are still reachable in loss record 27 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x10DD31: alloc_env_var (sources/parsing/envp_handler_utils.c:92)
+==16274==    by 0x10E656: envp_handler (sources/parsing/envp_handler.c:65)
+==16274==    by 0x10D337: process_text (sources/parsing/process_text.c:115)
+==16274==    by 0x10EB2C: parsing (sources/parsing/parsing.c:30)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 25 bytes in 3 blocks are still reachable in loss record 28 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x10E9C0: alloc_proc_text (sources/parsing/process_text_copy_utils.c:17)
+==16274==    by 0x10E41D: copy_text (sources/parsing/process_text_copy.c:77)
+==16274==    by 0x10D377: process_text (sources/parsing/process_text.c:121)
+==16274==    by 0x10EB2C: parsing (sources/parsing/parsing.c:30)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 32 bytes in 1 blocks are still reachable in loss record 29 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x10CAA8: create_redirection (sources/parsing/redirection_utils.c:19)
+==16274==    by 0x10CB4E: add_redirection (sources/parsing/redirection_utils.c:39)
+==16274==    by 0x10CD4C: handle_redirection_token (sources/parsing/redirection_utils.c:78)
+==16274==    by 0x10EEC3: process_redirections (sources/parsing/push_to_exec.c:26)
+==16274==    by 0x10ED70: collect_args_and_redirections (sources/parsing/push_to_exec.c:45)
+==16274==    by 0x10EBB1: parse_command_with_redirections (sources/parsing/push_to_exec.c:89)
+==16274==    by 0x10DDD6: push_to_exec (sources/parsing/push_to_exec2.c:61)
+==16274==    by 0x10EB46: parsing (sources/parsing/parsing.c:31)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 40 bytes in 1 blocks are still reachable in loss record 32 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x11119D: init_pipeline_vars (sources/exec/exec_pipeline_helpers.c:18)
+==16274==    by 0x110E27: pipeline_loop (sources/exec/exec_pipeline_utils.c:111)
+==16274==    by 0x11066F: execute_pipeline (sources/exec/exec.c:109)
+==16274==    by 0x1100ED: process_input (sources/minishell.c:23)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 40 bytes in 2 blocks are still reachable in loss record 33 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x10ED97: collect_args_and_redirections (sources/parsing/push_to_exec.c:47)
+==16274==    by 0x10EBB1: parse_command_with_redirections (sources/parsing/push_to_exec.c:89)
+==16274==    by 0x10DDD6: push_to_exec (sources/parsing/push_to_exec2.c:61)
+==16274==    by 0x10EB46: parsing (sources/parsing/parsing.c:31)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 48 bytes in 1 blocks are still reachable in loss record 36 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x10B751: alloc_parsing (sources/utils/utils_set.c:39)
+==16274==    by 0x10B721: set_data (sources/utils/utils_set.c:91)
+==16274==    by 0x11002E: main (sources/minishell.c:64)
+==16274== 
+==16274== 56 bytes in 1 blocks are still reachable in loss record 38 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x10BB25: alloc_tokens (sources/utils/set_parsing.c:81)
+==16274==    by 0x10BA44: set_parsing (sources/utils/set_parsing.c:118)
+==16274==    by 0x10EADC: parsing (sources/parsing/parsing.c:26)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 56 bytes in 1 blocks are still reachable in loss record 39 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x10CE21: set_words_tab (sources/parsing/parsing_tokens_words.c:77)
+==16274==    by 0x10F1FB: tokenize (sources/parsing/parsing_tokens.c:72)
+==16274==    by 0x10EAE9: parsing (sources/parsing/parsing.c:27)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 72 bytes in 1 blocks are still reachable in loss record 40 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x10B591: alloc_exec (sources/utils/utils_set.c:53)
+==16274==    by 0x1100D0: process_input (sources/minishell.c:21)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 72 bytes in 1 blocks are still reachable in loss record 41 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x10B591: alloc_exec (sources/utils/utils_set.c:53)
+==16274==    by 0x10DEDD: handle_pipe_operator (sources/parsing/push_to_exec2.c:28)
+==16274==    by 0x10DE02: push_to_exec (sources/parsing/push_to_exec2.c:66)
+==16274==    by 0x10EB46: parsing (sources/parsing/parsing.c:31)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 336 bytes in 6 blocks are still reachable in loss record 49 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x10BB80: alloc_tokens (sources/utils/set_parsing.c:89)
+==16274==    by 0x10BA44: set_parsing (sources/utils/set_parsing.c:118)
+==16274==    by 0x10EADC: parsing (sources/parsing/parsing.c:26)
+==16274==    by 0x1100E4: process_input (sources/minishell.c:22)
+==16274==    by 0x110092: main_loop (sources/minishell.c:45)
+==16274==    by 0x110037: main (sources/minishell.c:65)
+==16274== 
+==16274== 784 bytes in 1 blocks are still reachable in loss record 53 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x10B679: copy_envp (sources/utils/utils_set.c:76)
+==16274==    by 0x10B71C: set_data (sources/utils/utils_set.c:90)
+==16274==    by 0x11002E: main (sources/minishell.c:64)
+==16274== 
+==16274== 5,847 bytes in 97 blocks are still reachable in loss record 86 of 100
+==16274==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16274==    by 0x111688: ft_strdup (in /home/wojti/Desktop/minishell- final- 2/minishell)
+==16274==    by 0x10B6C1: copy_envp (sources/utils/utils_set.c:82)
+==16274==    by 0x10B71C: set_data (sources/utils/utils_set.c:90)
+==16274==    by 0x11002E: main (sources/minishell.c:64)
+==16274== 
+==16274== LEAK SUMMARY:
+==16274==    definitely lost: 0 bytes in 0 blocks
+==16274==    indirectly lost: 0 bytes in 0 blocks
+==16274==      possibly lost: 0 bytes in 0 blocks
+==16274==    still reachable: 7,520 bytes in 136 blocks
+==16274==         suppressed: 232,914 bytes in 238 blocks
+==16274== 
+==16274== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--16274-- 
+--16274-- used_suppression:     74 <Readline> ./readline.supp:2 suppressed: 228,828 bytes in 234 blocks
+--16274-- used_suppression:      4 <Readline/AddHistory> ./readline.supp:10 suppressed: 4,086 bytes in 4 blocks
+==16274== 
+==16274== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==16272== 
+==16272== HEAP SUMMARY:
+==16272==     in use at exit: 232,810 bytes in 234 blocks
+==16272==   total heap usage: 668 allocs, 434 frees, 275,161 bytes allocated
+==16272== 
+==16272== Searching for pointers to 234 not-freed blocks
+==16272== Checked 281,232 bytes
+==16272== 
+==16272== LEAK SUMMARY:
+==16272==    definitely lost: 0 bytes in 0 blocks
+==16272==    indirectly lost: 0 bytes in 0 blocks
+==16272==      possibly lost: 0 bytes in 0 blocks
+==16272==    still reachable: 0 bytes in 0 blocks
+==16272==         suppressed: 232,810 bytes in 234 blocks
+==16272== 
+==16272== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--16272-- 
+--16272-- used_suppression:     73 <Readline> ./readline.supp:2 suppressed: 228,794 bytes in 233 blocks
+--16272-- used_suppression:      1 <Readline/AddHistory> ./readline.supp:10 suppressed: 4,016 bytes in 1 blocks
+==16272== 
+==16272== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
