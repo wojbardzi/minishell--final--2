@@ -111,6 +111,7 @@ typedef struct s_parse
 	t_data		*data;
 }				t_parse;
 
+void			clear_pids(t_data *data);
 void			sigaction_error(int signal);
 void			interactive_mode_signals(t_data *data);
 void			handle_operator(t_exec **exec, t_parse *parsing, int *i);

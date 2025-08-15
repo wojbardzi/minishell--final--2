@@ -12,6 +12,15 @@
 
 #include "../../includes/minishell.h"
 
+void clear_pids(t_data *data)
+{
+	if (data->pids)
+	{
+		free(data->pids);
+		data->pids = NULL;
+	}
+}
+
 void	clear_parsing(t_parse *parsing)
 {
 	if (parsing->operators)

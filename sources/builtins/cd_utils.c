@@ -35,13 +35,32 @@ int	is_correct(t_exec *exec)
 	if (exec->args[0] && ft_strncmp(exec->args[0], "cd", 2) == 0)
 		arg_start = 1;
 	i = arg_start;
+	arg_count = 0;
 	while (exec->args[i])
-		i++;
-	arg_count = i - arg_start;
-	if (arg_count > 1)
 	{
-		write(STDERR_FILENO, "cd: too many arguments\n", 23);
-		return (1);
+		char	*s;
+		int		j;
+
+		s = exec->args[i];
+		j = 0;
+		/* count words inside this arg (split by whitespace) */
+		while (s[j])
+		{
+			while (s[j] && ft_isspace(s[j]))
+				j++;
+			if (s[j])
+			{
+				arg_count++;
+				while (s[j] && !ft_isspace(s[j]))
+					j++;
+			}
+		}
+		if (arg_count > 1)
+		{
+			write(STDERR_FILENO, "cd: too many arguments\n", 23);
+			return (1);
+		}
+		i++;
 	}
 	return (0);
 }

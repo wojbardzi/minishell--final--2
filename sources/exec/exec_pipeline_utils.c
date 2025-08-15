@@ -113,6 +113,8 @@ int	pipeline_loop(t_data *data, int *status)
 	if (is_single_builtin_check(current))
 	{
 		*status = execute_command(data, current) << 8;
+		free(pids);
+		data->pids = NULL;
 		return (0);
 	}
 	return (execute_pipeline_commands(data, status, pids, &pid_count));

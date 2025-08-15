@@ -20,7 +20,16 @@ int	handle_execve_path(t_data *data, t_exec *command_struct)
 	command_path = find_path(command_struct->cmd);
 	if (!command_path)
 	{
-		write(STDERR_FILENO, "CMD NOT FOUND\n", 15);
+		if (command_struct->cmd && command_struct->cmd[0])
+		{
+			write(STDERR_FILENO, "minishell: ", 11);
+			write(STDERR_FILENO, command_struct->cmd, ft_strlen(command_struct->cmd));
+			write(STDERR_FILENO, ": command not found\n", 20);
+		}
+		else
+		{
+			write(STDERR_FILENO, "minishell: command not found\n", 28);
+		}
 		exit_clear(data);
 		exit(127);
 	}

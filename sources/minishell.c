@@ -64,5 +64,6 @@ int	main(int argc, char **argv, char **envp)
 	set_data(&data, envp);
 	main_loop(&data);
 	exit_clear(&data);
+	clear_pids(&data);
 	return (g_exit_code);
 }
