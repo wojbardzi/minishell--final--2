@@ -3,21 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push_to_exec2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wojti <wojti@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wbardzin <wbardzin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 13:02:13 by wojti             #+#    #+#             */
-/*   Updated: 2025/08/13 13:02:14 by wojti            ###   ########.fr       */
+/*   Updated: 2025/08/19 12:14:03 by wbardzin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "../../includes/minishell.h"
 
 static int	is_pipe_operator(char *op)
 {
-	return (ft_strcmp(op, "|") == 0 || ft_strcmp(op, "||") == 0
-		|| ft_strcmp(op, "&&") == 0);
+	return (ft_strcmp(op, "|") == 0);
 }
 
 static int	handle_pipe_operator(t_parse *parsing, t_exec **current, int *i)
@@ -27,6 +24,7 @@ static int	handle_pipe_operator(t_parse *parsing, t_exec **current, int *i)
 		&& is_pipe_operator(parsing->tokens[*i]->proc_text))
 	{
 		(*current)->operator = ft_strdup(parsing->tokens[*i]->proc_text);
+		(*current)->pipe_output = true;
 		(*current)->next = alloc_exec();
 		if (!(*current)->next)
 		{

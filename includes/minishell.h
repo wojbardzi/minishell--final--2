@@ -58,6 +58,7 @@ typedef struct s_parse			t_parse;
 typedef struct s_token			t_token;
 typedef struct s_exec			t_exec;
 typedef struct s_redirection	t_redirection;
+extern int						g_exit_code;
 
 typedef struct s_data
 {
@@ -95,6 +96,8 @@ typedef struct s_exec
 	char			**envp;
 	int				out;
 	int				in;
+	int				*pipe_fd;
+	bool			pipe_output;
 	t_redirection	*redirections;
 	t_tokens		token;
 	struct s_exec	*next;
@@ -143,7 +146,6 @@ bool			debug_exec_struct(t_exec *exec);
 bool			debug_exec_struct_detailed(t_exec *exec);
 void			debug_tokens(t_token **tokens, int count);
 void			debug_words(char **words, int count);
-int				ft_isspace(char c);
 int				count_double_array(char **array);
 int				is_valid_identifier(const char *str);
 void			push_to_exec(t_parse *parsing, t_exec *exec);
@@ -294,7 +296,14 @@ int				setup_signal_mask(sigset_t *mask, t_data *data);
 void			setup_sigint(t_data *data);
 void			setup_sigquit(t_data *data);
 void			setup_sigpipe(t_data *data);
-
-extern int	g_exit_code;
+void			handle_child_status(int status, pid_t wpid, t_data *data,
+					int *save_status);
+int				calculate_exit_status(int save_status);
+void			close_pipe_fds(t_exec *exec, t_exec *skip_cmd);
+bool			create_pipes(t_data *data);
+bool			set_pipe_fds(t_exec *exec, t_exec *c);
+int				execute_pipeline_new(t_data *data);
+void			execute_command_child(t_data *data, t_exec *exec);
+int				exec_builtin_parent(t_data *data, t_exec *command_struct);
 
 #endif

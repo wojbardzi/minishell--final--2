@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   envp_handler_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wojti <wojti@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wbardzin <wbardzin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:26:45 by zuraw             #+#    #+#             */
-/*   Updated: 2025/08/12 21:14:37 by wojti            ###   ########.fr       */
+/*   Updated: 2025/08/18 20:01:22 by wbardzin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,6 @@ static int	handle_quotes(t_token *token, int *i, char *quot_mark)
 	return (0);
 }
 
-static int	count_env_var(t_token *token, int i)
-{
-	int	len;
-
-	len = 0;
-	while (ft_isalnum(token->text[i + 1 + len])
-		|| token->text[i + 1 + len] == '_')
-		len++;
-	if (len > 0 || token->text[i + 1] == '?')
-		return (1);
-	else
-		return (1);
-}
-
 int	env_var_count(t_token *token)
 {
 	int		count;
@@ -56,7 +42,7 @@ int	env_var_count(t_token *token)
 		if (handle_quotes(token, &i, &quot_mark))
 			break ;
 		if (token->text[i] == '$')
-			count += count_env_var(token, i);
+			count += 1;
 	}
 	return (count);
 }

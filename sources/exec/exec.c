@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wojti <wojti@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wbardzin <wbardzin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 10:30:11 by wojti             #+#    #+#             */
-/*   Updated: 2025/08/12 21:14:37 by wojti            ###   ########.fr       */
+/*   Updated: 2025/08/19 12:14:01 by wbardzin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	is_builtin_command(char *cmd)
 	return (0);
 }
 
-static int	exec_builtin_parent(t_data *data, t_exec *command_struct)
+int	exec_builtin_parent(t_data *data, t_exec *command_struct)
 {
 	int	saved_stdin;
 	int	saved_stdout;
@@ -105,11 +105,7 @@ int	execute_pipeline(t_data *data)
 {
 	int	status;
 
-	status = 0;
-	if (pipeline_loop(data, &status) == -1)
-		return (-1);
+	status = execute_pipeline_new(data);
 	unlink("heredoc_tmp");
-	if (WIFEXITED(status))
-		return (WEXITSTATUS(status));
-	return (-1);
+	return (status);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wojti <wojti@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wbardzin <wbardzin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:39:15 by pzurawic          #+#    #+#             */
-/*   Updated: 2025/08/12 22:12:45 by wojti            ###   ########.fr       */
+/*   Updated: 2025/08/18 21:51:12 by wbardzin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		ft_printf(const char *format, ...);
 int		ft_print_char(char c);
 int		ft_print_str(char *str);
 int		ft_print_nbr(int n);
+int		ft_isspace(char c);
 int		ft_print_unsigned(unsigned int n);
 int		ft_print_hex_long(unsigned long long n, int uppercase);
 int		ft_print_ptr(void *ptr);

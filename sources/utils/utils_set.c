@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_set.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wojti <wojti@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wbardzin <wbardzin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 21:30:52 by zuraw             #+#    #+#             */
-/*   Updated: 2025/08/12 19:35:51 by wojti            ###   ########.fr       */
+/*   Updated: 2025/08/19 12:14:06 by wbardzin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ t_exec	*alloc_exec(void)
 	exec->token = 0;
 	exec->out = STDOUT_FILENO;
 	exec->in = STDIN_FILENO;
+	exec->pipe_fd = NULL;
+	exec->pipe_output = false;
 	exec->redirections = NULL;
 	exec->next = NULL;
 	exec->prev = NULL;

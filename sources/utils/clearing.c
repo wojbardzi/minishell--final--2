@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   clearing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wojti <wojti@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wbardzin <wbardzin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 11:47:10 by zuraw             #+#    #+#             */
-/*   Updated: 2025/08/12 19:35:52 by wojti            ###   ########.fr       */
+/*   Updated: 2025/08/19 12:14:06 by wbardzin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void clear_pids(t_data *data)
+void	clear_pids(t_data *data)
 {
 	if (data->pids)
 	{
@@ -78,6 +78,11 @@ static void	free_exec_fields(t_exec *exec)
 	{
 		free(exec->cmd);
 		exec->cmd = NULL;
+	}
+	if (exec->pipe_fd)
+	{
+		free(exec->pipe_fd);
+		exec->pipe_fd = NULL;
 	}
 	if (exec->redirections)
 	{

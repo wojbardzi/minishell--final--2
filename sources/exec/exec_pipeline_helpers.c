@@ -39,3 +39,25 @@ void	kill_all_processes(pid_t *pids, int pid_count)
 		i++;
 	}
 }
+
+void	handle_child_status(int status, pid_t wpid, t_data *data,
+	int *save_status)
+{
+	if (WIFSIGNALED(status) && WTERMSIG(status) == SIGPIPE)
+		write(STDERR_FILENO, " Broken pipe\n", 13);
+	if (wpid == data->pids[0])
+		*save_status = status;
+}
+
+int	calculate_exit_status(int save_status)
+{
+	int	status;
+
+	if (WIFSIGNALED(save_status))
+		status = 128 + WTERMSIG(save_status);
+	else if (WIFEXITED(save_status))
+		status = WEXITSTATUS(save_status);
+	else
+		status = save_status;
+	return (status);
+}

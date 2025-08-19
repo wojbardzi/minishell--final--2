@@ -21,7 +21,8 @@ FILES = ft_bzero \
 		ft_strncmp \
 		ft_strtok \
 		ft_strtrim \
-		ft_substr
+		ft_substr \
+		ft_isspace
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
